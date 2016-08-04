@@ -41,12 +41,32 @@ describe('Thermostat', function() {
     expect(thermostat.MAXIMUM_TEMPERATURE).toEqual(32);
   });
 
+  it("can't be raises above maximum temperature", function() {
+    thermostat.increaseTemperature(5);
+    thermostat.increaseTemperature();
+    expect(thermostat.temperature).toEqual(25);
+  });
+
   it("Is on power save mode by default", function () {
     expect(thermostat.powerSave).toEqual(true)
   });
 
-  it ('Has a reset button which resets temp tp 20', function() {
+  it('Has a reset button which resets temp tp 20', function() {
     thermostat.reset()
     expect(thermostat.temperature).toEqual(20);
   });
+
+  it('Should colour green if temp is below 18', function() {
+    thermostat.decreaseTemperature(3)
+    expect(thermostat.colour).toEqual("Green");
+  })
+
+  it('Should colour yellow by default', function() {
+    expect(thermostat.colour).toEqual("Yellow");
+  });
+
+  it('Should colour red if temperature is about 25', function() {
+    thermostat.increaseTemperature(26);
+    expect(thermostat.colour).toEqual("Red");
+  })
 });
