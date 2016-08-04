@@ -51,7 +51,7 @@ Thermostat.prototype.reset = function () {
 };
 
 Thermostat.prototype.updateEnergy = function () {
-  if (this.temperature < 25 && this.temperature > 18) {
+  if (this.temperature < 25 && this.temperature >= 18) {
     this.colour = 'Yellow';
   }
   else if (this.temperature < 18 ) {
