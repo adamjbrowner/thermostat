@@ -5,6 +5,7 @@ function Thermostat() {
   this.MINIMUM_TEMPERATURE = 10
   this.MAXIMUM_TEMPERATURE = 25
   this.powerSave = true
+  this.colour = 'Yellow'
   this.updateEnergy()
 }
 
@@ -32,11 +33,17 @@ Thermostat.prototype.decreaseTemperature = function(number = 1) {
 Thermostat.prototype.powerSaveOn = function () {
   this.powerSave = true
   this.MAXIMUM_TEMPERATURE = 25
+  if (this.temperature > this.MAXIMUM_TEMPERATURE) {
+    this.temperature = this.MAXIMUM_TEMPERATURE;
+  }
 };
 
 Thermostat.prototype.powerSaveOff = function () {
   this.powerSave = false
   this.MAXIMUM_TEMPERATURE = 32
+  if (this.temperature > this.MAXIMUM_TEMPERATURE) {
+    this.temperature = this.MAXIMUM_TEMPERATURE;
+  }
 };
 
 Thermostat.prototype.reset = function () {
