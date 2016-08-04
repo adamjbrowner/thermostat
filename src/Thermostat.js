@@ -9,7 +9,7 @@ function Thermostat() {
 }
 
 Thermostat.prototype.increaseTemperature = function(number = 1) {
-  if (this.temperature >= this.MAXIMUM_TEMPERATURE) {
+  if (this.temperature + number >= this.MAXIMUM_TEMPERATURE) {
     this.temperature = this.MAXIMUM_TEMPERATURE;
   }
   else {
@@ -19,7 +19,7 @@ Thermostat.prototype.increaseTemperature = function(number = 1) {
 };
 
 Thermostat.prototype.decreaseTemperature = function(number = 1) {
-  if (this.temperature <= this.MINIMUM_TEMPERATURE) {
+  if (this.temperature - number <= this.MINIMUM_TEMPERATURE) {
     this.temperature = this.MINIMUM_TEMPERATURE;
   }
   else
